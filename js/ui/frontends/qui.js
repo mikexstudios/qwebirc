@@ -53,7 +53,7 @@ qwebirc.ui.QUI = new Class({
     this.reflow.delay(100); /* Konqueror fix */
     
     /* HACK, in Chrome this should work immediately but doesn't */
-    this.__createDropdownHint.delay(100, this);
+    //this.__createDropdownHint.delay(100, this);
   },
   __createDropdownMenu: function() {
     var dropdownMenu = new Element("span");
