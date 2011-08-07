@@ -1,5 +1,16 @@
 qwebirc.ui.GenericLoginBox = function(parentElement, callback, initialNickname, initialChannels, autoConnect, autoNick, networkName) {
   if(autoConnect) {
+
+    //MOD: Bypass the ConfirmBox and directly connect to the server with
+    //arguments passed in through GET.
+    var args = qwebirc.util.parseURI(String(document.location));
+    //Alias a few of the arguments:
+    args['nickname'] = args['nick'];
+    args['autojoin'] = args['channels'];
+    args['serverPassword'] = args['key'];
+    callback(args);
+    return;
+
     qwebirc.ui.ConfirmBox(parentElement, callback, initialNickname, initialChannels, autoNick, networkName);
   } else {
     qwebirc.ui.LoginBox(parentElement, callback, initialNickname, initialChannels, networkName);
