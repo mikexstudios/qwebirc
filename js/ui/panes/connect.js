@@ -1,17 +1,22 @@
 qwebirc.ui.GenericLoginBox = function(parentElement, callback, initialNickname, initialChannels, autoConnect, autoNick, networkName) {
   if(autoConnect) {
 
-    //MOD: Bypass the ConfirmBox and directly connect to the server with
-    //arguments passed in through GET.
-    var args = qwebirc.util.parseURI(String(document.location));
-    //Alias a few of the arguments:
-    args['nickname'] = args['nick'];
-    args['autojoin'] = args['channels'];
-    args['serverPassword'] = args['key'];
-    callback(args);
-    return;
+    var connect = function() {
+      //MOD: Bypass the ConfirmBox and directly connect to the server with
+      //arguments passed in through GET.
+      var args = qwebirc.util.parseURI(String(document.location));
+      //Alias a few of the arguments:
+      args['nickname'] = args['nick'];
+      args['autojoin'] = args['channels'];
+      args['serverPassword'] = args['key'];
+      callback(args);
+    }
+    //We wait until the page if fully loaded before connecting. Otherwise, 
+    //browsers will not think that the page has fully loaded and will keep
+    //displaying the loading spinner.
+    window.addEvent('load', connect);
 
-    qwebirc.ui.ConfirmBox(parentElement, callback, initialNickname, initialChannels, autoNick, networkName);
+    //qwebirc.ui.ConfirmBox(parentElement, callback, initialNickname, initialChannels, autoNick, networkName);
   } else {
     qwebirc.ui.LoginBox(parentElement, callback, initialNickname, initialChannels, networkName);
   }
