@@ -1,5 +1,11 @@
 env/
 config.py
+static/
+.checked
+.compiled
+server-auth.patch
+twistd.log
+twisted/plugins/dropin.cache
 
 #python .gitignore
 *.py[co]
