@@ -174,7 +174,7 @@ qwebirc.ui.LoginBox = function(parentElement, callback, initialNickname, initial
       var passwordBox = qwebirc.util.createInput("password", passwordRow[1], "connect_auth_password");
 
       authCheckBox.addEvent("click", function(e) { qwebirc.ui.authShowHide(authCheckBox, authRow, usernameBox, usernameRow, passwordRow[0]) });
-    } else if(qwebirc.auth.bouncerAuth()) {
+    } else if(qwebirc.auth.bouncerAuth() || qwebirc.auth.serverAuth()) {
       var passwordRow = createRow("Password:");
       var passwordBox = qwebirc.util.createInput("password", passwordRow, "connect_auth_password");
     }
@@ -224,7 +224,7 @@ qwebirc.ui.LoginBox = function(parentElement, callback, initialNickname, initial
           }
           
           data["serverPassword"] = usernameBox.value + " " + passwordBox.value;
-      } else if(qwebirc.auth.bouncerAuth()) {
+      } else if(qwebirc.auth.bouncerAuth() || qwebirc.auth.serverAuth()) {
         if(!passwordBox.value) {
           alert("You must supply a password.");
           passwordBox.focus();

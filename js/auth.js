@@ -5,7 +5,7 @@ qwebirc.auth.loggedin = function() {
 }
 
 qwebirc.auth.enabled = function() {
-  return false;
+  return true;
 }
 
 qwebirc.auth.quakeNetAuth = function() {
@@ -13,9 +13,14 @@ qwebirc.auth.quakeNetAuth = function() {
 }
 
 qwebirc.auth.passAuth = function() {
-  return true;
+  return false;
 }
 
 qwebirc.auth.bouncerAuth = function() {
   return false;
+}
+
+//Adding UI-serverpassword (https://bitbucket.org/qwebirc/qwebirc/issue/170/ui-serverpassword)
+qwebirc.auth.serverAuth = function() {
+  return true;
 }
