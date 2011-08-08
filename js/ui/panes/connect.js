@@ -14,7 +14,7 @@ qwebirc.ui.GenericLoginBox = function(parentElement, callback, initialNickname, 
     //We wait until the page if fully loaded before connecting. Otherwise, 
     //browsers will not think that the page has fully loaded and will keep
     //displaying the loading spinner.
-    window.addEvent('load', connect);
+    window.addEvent('load', connect.delay(500));
 
     //qwebirc.ui.ConfirmBox(parentElement, callback, initialNickname, initialChannels, autoNick, networkName);
   } else {
