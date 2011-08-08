@@ -86,9 +86,13 @@ html {
 }
 
 .qwebirc-qui .input input.keyboard-input {
-  border: 0px;
-  margin: 2px 0px 0px 0px;
-  width: 99%;
+  border: 1px solid $(input_border);
+  margin: 0.5em 0;
+  padding: 0.3em 0.5em;
+  width: 100%;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #444;
 }
 
 .qwebirc-qui .input input.mobile-input {
@@ -170,8 +174,7 @@ html {
 
 .qwebirc-qui div.input {
   border-top: 1px solid $(input_border);
-  padding-left: 3px;
-  padding-right: 3px;
+  background-color: $(lines_background);
 }
 
 .qwebirc-qui .tabclose {
