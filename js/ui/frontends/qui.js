@@ -182,6 +182,9 @@ qwebirc.ui.QUI = new Class({
       this.qjsui.addEvent("reflow", reflowButton);
     } else {
       inputbox.addClass("keyboard-input");
+      inputbox.setProperty('value', 'Post a message...');
+      inputbox.setProperty('onfocus', 'if (this.value == "Post a message...") { this.value = ""; }');
+      inputbox.setProperty('onblur', 'if (this.value.length == 0) { this.value = "Post a message..."; }');
     }
     
     form.addEvent("submit", function(e) {
