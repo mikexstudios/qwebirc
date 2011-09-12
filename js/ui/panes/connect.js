@@ -10,6 +10,13 @@ qwebirc.ui.GenericLoginBox = function(parentElement, callback, initialNickname, 
       args['autojoin'] = args['channels'];
       args['serverPassword'] = args['key'];
       callback(args);
+
+      //MOD: Now remove the parameters from URL because user's IRC auth 
+      //password is exposed in the query params. Note that IE does not
+      //support pushState.
+      if(history.pushState) {
+        history.pushState({}, document.title, location.pathname);
+      }
     }
     //We wait until the page if fully loaded before connecting. Otherwise, 
     //browsers will not think that the page has fully loaded and will keep
