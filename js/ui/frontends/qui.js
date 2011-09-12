@@ -53,7 +53,7 @@ qwebirc.ui.QUI = new Class({
     this.reflow.delay(100); /* Konqueror fix */
     
     /* HACK, in Chrome this should work immediately but doesn't */
-    //this.__createDropdownHint.delay(100, this);
+    this.__createDropdownHint.delay(100, this);
   },
   __createDropdownMenu: function() {
     var dropdownMenu = new Element("span");
@@ -117,7 +117,9 @@ qwebirc.ui.QUI = new Class({
   __createDropdownHint: function() {
     var dropdownhint = new Element("div");
     dropdownhint.addClass("dropdownhint");
-    dropdownhint.set("text", "Click the icon for the main menu.");
+    //MOD: Removed text from dropdown hint. This function needs to run,
+    //however, to set up the dropdown menu.
+    //dropdownhint.set("text", "Click the icon for the main menu.");
     dropdownhint.setStyle("top", this.outerTabs.getSize().y + 5);
 
     this.parentElement.appendChild(dropdownhint);
